@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB-X | The Digital Empire</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-gradient: linear-gradient(135deg, #BF953F 0%, #FCF6BA 45%, #B38728 70%, #AA771C 100%);
+            --dark-bg: #050505;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: #ffffff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .font-luxury { font-family: 'Cinzel', serif; }
+
+        .gold-text {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .gold-border-glow {
+            position: relative;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .gold-border-glow:hover {
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .btn-gold {
+            background: var(--gold-gradient);
+            color: #000;
+            font-weight: 800;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Quiz Logic UI */
+        .quiz-card {
+            background: rgba(15, 15, 15, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .option-item {
+            transition: all 0.3s ease;
+            border-left: 0px solid var(--gold);
+        }
+
+        .option-item:hover {
+            background: rgba(212, 175, 55, 0.08);
+            border-left-width: 4px;
+            padding-left: 1.5rem;
+        }
+
+        .option-item.active {
+            background: var(--gold);
+            color: #000;
+            font-weight: bold;
+        }
+
+        #progress-fill {
+            height: 100%;
+            background: var(--gold-gradient);
+            transition: width 0.5s ease;
+        }
+
+        /* Hide Scrollbars */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 px-8 py-6 flex justify-between items-center bg-black/50 backdrop-blur-md border-b border-white/5">
+        <div class="text-3xl font-luxury font-bold gold-text tracking-[6px]">WEB-X</div>
+        <div class="hidden md:flex space-x-10 text-[10px] tracking-[3px] uppercase font-bold">
+            <a href="#campuses" class="hover:text-[var(--gold)] transition">Campuses</a>
+            <a href="#pathfinder" class="hover:text-[var(--gold)] transition">Path Finder</a>
+            <a href="#" class="gold-text">The Vault</a>
+        </div>
+        <a href="#pathfinder" class="btn-gold px-6 py-2 rounded-sm text-[10px]">Start Journey</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+        <div class="absolute w-[500px] h-[500px] bg-yellow-600/10 rounded-full blur-[150px] -top-20 -left-20 animate-pulse"></div>
+        <div class="absolute w-[400px] h-[400px] bg-yellow-900/10 rounded-full blur-[150px] -bottom-20 -right-20"></div>
+
+        <div class="text-center z-10 animate__animated animate__fadeIn">
+            <h2 class="text-[var(--gold)] tracking-[8px] uppercase text-xs mb-6 opacity-80">ESTABLISHED 2026 • THE ELITE STANDARD</h2>
+            <h1 class="text-6xl md:text-9xl font-luxury font-bold mb-8 leading-none">
+                THE SKILLS OF <br> <span class="gold-text">THE 1%</span>
+            </h1>
+            <p class="text-gray-400 max-w-2xl mx-auto text-lg md:text-xl font-light mb-12 leading-relaxed">
+                Welcome to Web-X. We don't just teach digital skills; we architect empires. Choose your campus or let our DNA-test decide your fate.
+            </p>
+            <div class="flex flex-col md:flex-row gap-6 justify-center items-center">
+                <a href="#pathfinder" class="btn-gold px-12 py-5 rounded-full shadow-lg">Take Personality Test</a>
+                <a href="#campuses" class="text-white border border-white/10 px-12 py-5 rounded-full hover:bg-white hover:text-black transition uppercase tracking-widest text-xs">View Campuses</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campuses Section -->
+    <section id="campuses" class="py-32 px-8 bg-[#080808]">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
+                <div>
+                    <h3 class="gold-text uppercase tracking-widest text-sm mb-2">Curriculum</h3>
+                    <h2 class="text-5xl font-luxury font-bold">THE ELITE <span class="gold-text">CAMPUSES</span></h2>
+                </div>
+                <p class="text-gray-500 max-w-md text-sm leading-relaxed">
+                    Every student receives the <strong>Business Mastery Campus</strong> as a fundamental baseline, ensuring your technical skill is converted into liquid capital.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <!-- Skill Cards -->
+                <div class="gold-border-glow p-8 bg-[#0c0c0c]">
+                    <i data-lucide="bar-chart-3" class="text-[var(--gold)] w-8 h-8 mb-6"></i>
+                    <h4 class="text-xl font-bold mb-4">Forex Trading</h4>
+                    <p class="text-gray-500 text-sm">Master global liquidity, risk management, and the psychology of the world markets.</p>
+                </div>
+                <div class="gold-border-glow p-8 bg-[#0c0c0c]">
+                    <i data-lucide="code-2" class="text-[var(--gold)] w-8 h-8 mb-6"></i>
+                    <h4 class="text-xl font-bold mb-4">Web Development</h4>
+                    <p class="text-gray-500 text-sm">Build high-end, responsive digital real estate using modern frameworks and UI/UX laws.</p>
+                </div>
+                <div class="gold-border-glow p-8 bg-[#0c0c0c]">
+                    <i data-lucide="brain-circuit" class="text-[var(--gold)] w-8 h-8 mb-6"></i>
+                    <h4 class="text-xl font-bold mb-4">AI Mastery</h4>
+                    <p class="text-gray-500 text-sm">Command LLMs and automation tools to 10x your productivity and output quality.</p>
+                </div>
+                <div class="gold-border-glow p-8 bg-[#0c0c0c]">
+                    <i data-lucide="pen-tool" class="text-[var(--gold)] w-8 h-8 mb-6"></i>
+                    <h4 class="text-xl font-bold mb-4">Copywriting</h4>
+                    <p class="text-gray-500 text-sm">Master the art of persuasive language to sell anything to anyone, anywhere.</p>
+                </div>
+                <div class="gold-border-glow p-8 bg-[#0c0c0c]">
+                    <i data-lucide="shield-alert" class="text-[var(--gold)] w-8 h-8 mb-6"></i>
+                    <h4 class="text-xl font-bold mb-4">Ethical Hacking</h4>
+                    <p class="text-gray-400 text-sm">Understand security vulnerabilities to protect systems and master the digital shadow.</p>
+                </div>
+                <div class="gold-border-glow p-8 bg-[#0c0c0c]">
+                    <i data-lucide="layers" class="text-[var(--gold)] w-8 h-8 mb-6"></i>
+                    <h4 class="text-xl font-bold mb-4">Graphics Design</h4>
+                    <p class="text-gray-500 text-sm">Visual storytelling and branding for premium global identities and luxury aesthetics.</p>
+                </div>
+                <div class="gold-border-glow p-8 bg-[#0c0c0c]">
+                    <i data-lucide="video" class="text-[var(--gold)] w-8 h-8 mb-6"></i>
+                    <h4 class="text-xl font-bold mb-4">Content Creation</h4>
+                    <p class="text-gray-500 text-sm">Master short-form and long-form video editing to dominate the attention economy.</p>
+                </div>
+                <div class="gold-border-glow p-8 bg-[#0c0c0c] border-2 border-[var(--gold)]">
+                    <i data-lucide="gem" class="text-[var(--gold)] w-8 h-8 mb-6"></i>
+                    <h4 class="text-xl font-bold mb-4 gold-text">Business Mastery</h4>
+                    <p class="text-gray-400 text-sm italic">The core foundation. Included with all campuses to build your profitable empire.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Path Finder (Personality Test) Section -->
+    <section id="pathfinder" class="py-32 px-4 relative">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-luxury font-bold gold-text mb-4">PATH FINDER</h2>
+                <p class="text-gray-400">Answer 5 questions. Discover your digital destiny.</p>
+            </div>
+
+            <div class="quiz-card rounded-2xl overflow-hidden shadow-2xl relative min-h-[550px] flex flex-col">
+                <!-- Top Progress Bar -->
+                <div class="h-1 bg-white/10 w-full">
+                    <div id="progress-fill" style="width: 20%;"></div>
+                </div>
+
+                <div id="quiz-body" class="p-8 md:p-16 flex-grow flex flex-col justify-center">
+                    
+                    <!-- Question Wrapper -->
+                    <div id="question-container" class="animate__animated animate__fadeInRight">
+                        <span id="step-label" class="text-[var(--gold)] text-xs tracking-[4px] uppercase mb-4 block">Question 01</span>
+                        <h3 id="question-text" class="text-2xl md:text-3xl font-bold mb-10 leading-tight">Which digital 'vibe' attracts you most?</h3>
+                        
+                        <div id="options-grid" class="grid grid-cols-1 gap-3">
+                            <!-- Options Injected by JS -->
+                        </div>
+                    </div>
+
+                    <!-- Result Screen -->
+                    <div id="result-screen" class="hidden text-center animate__animated animate__zoomIn">
+                        <div class="inline-block p-4 rounded-full bg-[var(--gold)] text-black mb-6">
+                            <i data-lucide="sparkles" class="w-8 h-8"></i>
+                        </div>
+                        <h2 class="text-4xl font-luxury gold-text mb-4 tracking-tighter">YOUR PATH IS CLEAR!</h2>
+                        <div id="result-title" class="text-3xl font-extrabold mb-8 uppercase tracking-widest"></div>
+                        
+                        <div class="bg-white/5 border border-white/10 p-6 rounded-lg mb-10 text-left">
+                            <p class="text-gray-300 leading-relaxed">
+                                You also get our <strong>Business Mastery Campus</strong> included for FREE. This ensures you don't just learn a skill—you learn how to turn it into a profitable empire.
+                            </p>
+                        </div>
+                        
+                        <!-- Updated Get Started Button with Telegram Link -->
+                        <a href="https://t.me/web_x_community" target="_blank" class="btn-gold px-12 py-4 rounded-sm text-sm">Get Started</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-white/5 text-center">
+        <div class="text-2xl font-luxury gold-text tracking-[8px] mb-8">WEB-X</div>
+        <p class="text-gray-600 text-xs tracking-widest uppercase">&copy; 2026 Web-X Academy. The Gold Standard of Digital Mastery.</p>
+    </footer>
+
+    <script>
+        // Init Icons
+        lucide.createIcons();
+
+        const questions = [
+            {
+                q: "Which digital 'vibe' attracts you most?",
+                options: [
+                    { t: "The thrill of watching numbers and profits move in real-time.", v: "A" },
+                    { t: "The power of using words to influence how people think.", v: "B" },
+                    { t: "The speed of using robots and smart tools to do the work.", v: "C" },
+                    { t: "The satisfaction of building a website that actually works.", v: "D" },
+                    { t: "The joy of making things look beautiful and professional.", v: "E" },
+                    { t: "The mystery of exploring hidden systems and digital locks.", v: "F" },
+                    { t: "The energy of making a video that people can’t stop watching.", v: "G" }
+                ]
+            },
+            {
+                q: "If you had to solve a big problem, how would you start?",
+                options: [
+                    { t: "Analyze the data and risk before making a move.", v: "A" },
+                    { t: "Write a message that convinces people to help.", v: "B" },
+                    { t: "Use an AI tool to generate a solution instantly.", v: "C" },
+                    { t: "Start building a digital platform or tool to fix it.", v: "D" },
+                    { t: "Draw a visual plan to show the solution clearly.", v: "E" },
+                    { t: "Search for a 'backdoor' or a weakness to exploit.", v: "F" },
+                    { t: "Record the process and turn it into a viral story.", v: "G" }
+                ]
+            },
+            {
+                q: "What is your 'Dream Tool'?",
+                options: [
+                    { t: "A professional trading dashboard with live charts.", v: "A" },
+                    { t: "A blank page ready for high-value sales copy.", v: "B" },
+                    { t: "A powerful AI prompt that automates my day.", v: "C" },
+                    { t: "A clean code editor with zero errors.", v: "D" },
+                    { t: "High-end design software for logos and art.", v: "E" },
+                    { t: "A secure terminal for network testing.", v: "F" },
+                    { t: "A pro video timeline with 4K effects.", v: "G" }
+                ]
+            },
+            {
+                q: "How do you want to make your first $1,000?",
+                options: [
+                    { t: "By making smart trades on the global market.", v: "A" },
+                    { t: "By writing ads that bring in thousands of customers.", v: "B" },
+                    { t: "By building AI systems that save companies time.", v: "C" },
+                    { t: "By launching a custom website for a new business.", v: "D" },
+                    { t: "By designing premium graphics for top influencers.", v: "E" },
+                    { t: "By securing a company’s data from cyber threats.", v: "F" },
+                    { t: "By creating content that dominates social media.", v: "G" }
+                ]
+            },
+            {
+                q: "Which of these describes your mind best?",
+                options: [
+                    { t: "Calm and Analytical (The Investor).", v: "A" },
+                    { t: "Persuasive and Verbal (The Speaker).", v: "B" },
+                    { t: "Modern and Efficient (The Automator).", v: "C" },
+                    { t: "Logical and Structured (The Architect).", v: "D" },
+                    { t: "Creative and Visual (The Artist).", v: "E" },
+                    { t: "Curious and Investigative (The Ghost).", v: "F" },
+                    { t: "Bold and Expressive (The Creator).", v: "G" }
+                ]
+            }
+        ];
+
+        const pathMap = {
+            "A": "Forex Trading Campus 📈",
+            "B": "Copywriting Campus ✍️",
+            "C": "AI Campus 🤖",
+            "D": "Web Development Campus 💻",
+            "E": "Graphics Design Campus 🎨",
+            "F": "Ethical Hacking Campus 🛡️",
+            "G": "Content Creation & Video Editing 🎬"
+        };
+
+        let currentIdx = 0;
+        let userAnswers = [];
+
+        function renderQuestion() {
+            const container = document.getElementById('question-container');
+            const data = questions[currentIdx];
+
+            // Reset animation
+            container.classList.remove('animate__fadeInRight');
+            void container.offsetWidth;
+            container.classList.add('animate__fadeInRight');
+
+            document.getElementById('step-label').innerText = `Question 0${currentIdx + 1}/05`;
+            document.getElementById('question-text').innerText = data.q;
+            document.getElementById('progress-fill').style.width = `${((currentIdx + 1) / questions.length) * 100}%`;
+
+            const grid = document.getElementById('options-grid');
+            grid.innerHTML = '';
+
+            data.options.forEach((opt, index) => {
+                const btn = document.createElement('div');
+                btn.className = 'option-item p-4 rounded-lg bg-white/5 border border-white/10 cursor-pointer flex items-center group animate__animated animate__fadeInUp';
+                btn.style.animationDelay = `${index * 0.05}s`;
+                btn.innerHTML = `
+                    <span class="w-8 text-[var(--gold)] font-bold group-hover:text-white transition">${opt.v}</span>
+                    <span class="text-sm md:text-base">${opt.t}</span>
+                `;
+                btn.onclick = () => selectOption(opt.v);
+                grid.appendChild(btn);
+            });
+        }
+
+        function selectOption(val) {
+            userAnswers.push(val);
+            
+            // Subtle feedback delay before transition
+            setTimeout(() => {
+                if (currentIdx < questions.length - 1) {
+                    currentIdx++;
+                    renderQuestion();
+                } else {
+                    showFinalResult();
+                }
+            }, 350);
+        }
+
+        function showFinalResult() {
+            document.getElementById('question-container').classList.add('hidden');
+            const resultScreen = document.getElementById('result-screen');
+            resultScreen.classList.remove('hidden');
+
+            // Find most frequent letter
+            const frequency = {};
+            userAnswers.forEach(ans => frequency[ans] = (frequency[ans] || 0) + 1);
+            
+            const winnerKey = Object.keys(frequency).reduce((a, b) => frequency[a] > frequency[b] ? a : b);
+            
+            document.getElementById('result-title').innerText = pathMap[winnerKey];
+            lucide.createIcons();
+        }
+
+        // Run Initializers
+        renderQuestion();
+    </script>
+</body>
+</html>
